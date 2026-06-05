@@ -1,5 +1,9 @@
 # Trading Knowledge RAG
 
+[![License: MIT](https://img.shields.io/github/license/jmgindicators/trading-knowledge-rag)](LICENSE)
+[![Python 3.11+](https://img.shields.io/badge/python-3.11+-blue.svg)](https://www.python.org/downloads/)
+[![Built with Claude](https://img.shields.io/badge/Built_with-Claude_Haiku_4.5-orange.svg)](https://www.anthropic.com/claude)
+
 > Conversational RAG assistant over the documented trading methodology of a professional futures trader.
 
 A retrieval-augmented generation system that answers natural language questions about a structured trading methodology document. Built on local multilingual embeddings, a persistent vector store, and Claude Haiku 4.5, with a Streamlit chat interface that includes source attribution and live cost tracking.

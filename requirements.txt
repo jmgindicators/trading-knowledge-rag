@@ -1,0 +1,38 @@
+# ============================================================
+# requirements.txt - Trading Knowledge RAG
+# ============================================================
+#
+# Run-time dependencies. Install everything with:
+#
+#     pip install -r requirements.txt
+#
+# Transitive sub-dependencies (langchain-core, langchain-protocol,
+# torch, transformers, numpy, etc.) are resolved and installed
+# automatically by pip.
+# ============================================================
+
+# --- LLM API ---
+# Official Anthropic SDK for calling Claude (Haiku 4.5)
+anthropic==0.104.1
+
+# --- Vector database ---
+# Local persistent vector store with HNSW indexing
+chromadb==1.5.9
+
+# --- Markdown chunking ---
+# Markdown-aware splitter that respects header hierarchy,
+# plus recursive character splitter as fallback for large sections
+langchain-text-splitters==1.1.2
+
+# --- Embeddings ---
+# Multilingual sentence-transformer model
+# (paraphrase-multilingual-mpnet-base-v2, 768d)
+sentence-transformers==5.5.1
+
+# --- Configuration ---
+# Loads ANTHROPIC_API_KEY from a local .env file
+python-dotenv==1.2.2
+
+# --- Web UI ---
+# Streamlit framework for the chat interface
+streamlit==1.57.0

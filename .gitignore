@@ -1,0 +1,59 @@
+# ============================================================
+# .gitignore  ·  Trading Knowledge RAG
+# ============================================================
+
+
+# --- Secrets: NEVER commit credentials ---
+.env*
+!.env.example
+# --- Entorno virtual de Python ---
+.venv/
+venv/
+env/
+ENV/
+
+# --- Cache de Python ---
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# --- Base vectorial: se regenera con ingest.py, no se versiona ---
+chroma_db/
+
+# --- Cache de HuggingFace y modelos descargados ---
+.cache/
+*.bin
+*.safetensors
+
+# --- Distribución y empaquetado ---
+build/
+dist/
+*.egg-info/
+*.egg
+
+# --- Testing y cobertura ---
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+
+# --- IDEs y editores ---
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# --- Streamlit ---
+.streamlit/secrets.toml
+
+# --- Notebooks ---
+.ipynb_checkpoints/
+*.ipynb_checkpoints
+
+# --- Logs ---
+*.log
+logs/

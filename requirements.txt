@@ -2,7 +2,7 @@
 # requirements.txt - Trading Knowledge RAG
 # ============================================================
 #
-# Run-time dependencies. Install everything with:
+# Run-time and test dependencies. Install everything with:
 #
 #     pip install -r requirements.txt
 #
@@ -36,3 +36,7 @@ python-dotenv==1.2.2
 # --- Web UI ---
 # Streamlit framework for the chat interface
 streamlit==1.57.0
+
+# --- Testing ---
+# Test runner and fixtures (also used in CI)
+pytest==8.3.4

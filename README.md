@@ -1,6 +1,6 @@
 # Trading Knowledge RAG
 
-[![License: MIT](https://img.shields.io/github/license/jmgindicators/trading-knowledge-rag)](LICENSE)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Python 3.11+](https://img.shields.io/badge/python-3.11+-blue.svg)](https://www.python.org/downloads/)
 [![Built with Claude](https://img.shields.io/badge/Built_with-Claude_Haiku_4.5-orange.svg)](https://www.anthropic.com/claude)
 

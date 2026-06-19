@@ -25,19 +25,19 @@ The methodology used as the knowledge base belongs to **Jose Gonzalez** (`jmgind
 
 ### Initial view
 
-![Trading Knowledge RAG initial dashboard](docs/screenshots/dashboard.png)
+![Trading Knowledge RAG initial dashboard](https://i.imgur.com/qg7JxgQ.png)
 
 *Welcome screen with system information, technical stack, and three example questions to get the conversation started.*
 
 ### Multi-turn conversation
 
-![Conversation example with source attribution](docs/screenshots/chat-conversation.png)
+![Conversation example with source attribution](https://i.imgur.com/NIQPmDy.png)
 
 *A two-turn exchange about risk management and the quality filters of the BigTradesDir indicator. The sidebar tracks queries, accumulated cost in USD, and token usage in real time.*
 
 ### Sidebar with retrieved sources
 
-![Sidebar showing system info and retrieved chunks](docs/screenshots/sidebar-sources.png)
+![Sidebar showing system info and retrieved chunks](https://i.imgur.com/La3zihO.png)
 
 *The sidebar exposes the underlying retrieval: session metrics and expandable views of the chunks that fed the most recent answer. Every fragment shows its source section and its cosine similarity score.*
 

@@ -8,13 +8,14 @@ Trabajo con precisión quirúrgica: espero que el precio llegue a mis zonas y ac
 
 ## 2. Mi ventaja (Edge)
 
-Mi edge consiste en identificar **rupturas con volumen en zonas de liquidez**, combinando tres herramientas que se confirman entre sí:
+Mi edge consiste en identificar **el inicio del impulso en zonas de oferta y demanda confirmadas por volumen institucional**, combinando varias herramientas que se confirman entre sí:
 
-- Indicador propio de **zonas de oferta y demanda** basado en el rango de la sesión nocturna
-- Indicador propio de **lectura de manos fuertes** (volumen institucional con detección direccional)
-- Análisis de **comportamiento de la vela**: cierre, mecha, agotamiento y rechazo
+- Indicador propio de **zonas macro / estructurales** basado en el rango de la sesión nocturna (TradingZonesFuturos): el mapa del terreno.
+- Indicador propio de **zonas de momentum** (JmgUnizones Pro) en 15 min, afinado en 1 y 5 min: el timing fino de la entrada.
+- Indicador propio de **lectura de manos fuertes** (BigTradesDir, volumen institucional con detección direccional): confirmación obligatoria.
+- Análisis de **comportamiento de la vela**: cierre, mecha, agotamiento, absorción y rechazo.
 
-Cuando los tres elementos se alinean, ejecuto. Si falta uno, espero.
+Cuando los elementos se alinean, ejecuto. Si falta uno, espero.
 
 ## 3. Prioridad absoluta
 
@@ -29,11 +30,13 @@ El "no operar" es también una operación ganadora cuando no hay condiciones.
 - **Estilo**: scalper, una operación al día
 - **Cuenta operativa**: Bulenox Master Account (fondeada profesionalmente)
 
-## 5. Sistema de zonas (Indicador TradingZonesFuturos)
+## 5. Sistema de zonas (dos capas)
 
-Mi indicador propio detecta el rango de la sesión nocturna y proyecta zonas de operativa:
+Mi operativa combina DOS capas de zonas con funciones distintas. No se sustituyen: se complementan. La capa macro me dice DÓNDE puede haber un cambio de tendencia o un muro; la capa de momentum decide CUÁNDO entrar. Lo potente es cuando ambas se alinean.
 
-### Cómo funciona
+### Capa 1 — Zonas macro / estructurales (TradingZonesFuturos, Initial Balance nocturno)
+
+Función: el mapa del terreno. Me indica dónde puede haber un cambio de tendencia, un muro, o niveles relevantes en el contexto del día.
 
 - **Recogida de datos**: desde las 21:00 (cierre Wall Street) hasta las 06:00 hora de Madrid (cuando cierran las bolsas asiáticas). Durante este periodo, el indicador captura el máximo y el mínimo del rango.
 - **Initial Balance (IB)**: el rango high-low de esa sesión nocturna se considera válido si su tamaño es de al menos 10 puntos.
@@ -41,17 +44,20 @@ Mi indicador propio detecta el rango de la sesión nocturna y proyecta zonas de 
   - **Zona alta (resistencia)**: entre IB High + 62.5 y IB High + 125. Color azul.
   - **Zona baja (soporte)**: entre IB Low - 62.5 e IB Low - 125. Color azul.
 - **Niveles de extensión** (objetivos y extremos):
-  - Extensión 50% del rango (arriba y abajo): línea verde discontinua, target intermedio
-  - Extensión 100% del rango (arriba y abajo): línea roja discontinua, extremo del movimiento
+  - Extensión 50% del rango (arriba y abajo): línea verde discontinua, target intermedio.
+  - Extensión 100% del rango (arriba y abajo): línea roja discontinua, extremo del movimiento.
+- **Rol actual**: contexto macro. Define el sesgo estructural del día (dónde estoy en el rango: cerca de un muro, de un giro potencial, de un nivel de liquidez).
 
-### Cómo uso estas zonas
+### Capa 2 — Zonas de momentum (JmgUnizones Pro + BigTradesDir)
 
-Las zonas tienen **doble lectura**:
+Función: el timing fino. Me indica cuándo entrar, en el momento inicial del impulso, para cubrirme justo del mínimo (en demanda) o máximo (en oferta) siguiente.
 
-- **Como ruptura**: cuando el precio rompe la zona con fuerza (acompañado de volumen institucional), entro a favor de la ruptura. Long si rompe la zona alta al alza, short si rompe la zona baja a la baja.
-- **Como muro (soporte/resistencia)**: cuando el precio llega a la zona y la respeta (rebote con rechazo), entro contra la zona. Short en zona alta si rebota a la baja, long en zona baja si rebota al alza.
-
-La elección entre los dos enfoques depende del contexto: fortaleza de la llegada, volumen, comportamiento de la vela y confluencia con manos fuertes.
+- **JmgUnizones Pro** detecta zonas de oferta y demanda con rating de calidad (estrellas) y confirmación de timeframe superior (HTF).
+- **Rating mínimo de zona válida**: 2 estrellas. No opero zonas de 1 estrella (mismo criterio de exigencia que con BigTradesDir: media o fuerte).
+- **Marco principal**: 15 min. Es el timeframe que manda para definir la zona y el sesgo de la entrada.
+- **Marcos de afinado**: 1 y 5 min, para clavar el gatillo exacto dentro de la zona de 15 min según el volumen.
+- **OB 50%**: la línea media del order block que pinta el indicador dentro de la zona. Es el nivel de referencia donde espero la reacción (absorción o ruptura).
+- **BigTradesDir**: lectura de manos fuertes (institucional). OBLIGATORIO en todas las entradas. Sin confirmación de BigTradesDir no hay entrada.
 
 ## 6. Lectura de manos fuertes (Indicador BigTradesDir)
 
@@ -83,37 +89,49 @@ Mi regla: opero principalmente con señales fuertes o medias en zonas relevantes
 
 ## 7. Tipos de setup que ejecuto
 
-### Setup A — Ruptura de zona con volumen
+Dos gatillos de entrada principales. Los dos exigen confirmación de BigTradesDir (señal media o fuerte, en sentido del trade). Sin esa confirmación, no opero.
 
-- El precio llega a una zona delimitada por el indicador
-- La rompe con fuerza, con vela de cierre fuera de la zona
-- BigTradesDir confirma con señal media o fuerte en la dirección de la ruptura
-- Entrada a favor de la ruptura, stop al otro lado de la zona
+### Gatillo A — Absorción en el OB 50% (giro / inicio de impulso)
 
-### Setup B — Zona como muro (rebote)
+Evolución del antiguo "Setup B — zona como muro / rebote". Es uno de mis setups preferidos.
 
-- El precio llega a la zona
-- La vela muestra rechazo (mecha contra la zona, cierre en sentido contrario)
-- BigTradesDir confirma señal en sentido del rebote (pin bar + cierre fuerte)
-- Entrada contra la zona, stop al otro lado del extremo de la mecha
+- El precio entra en la zona de oferta/demanda de Unizones en 15 min (mínimo 2 estrellas).
+- Llega a la línea del OB 50% (mitad del order block).
+- La vela en ese nivel empieza a desinflarse (pierde fuerza, agotamiento).
+- Bajo a 1 o 5 min según el volumen para afinar el gatillo.
+- Pongo la entrada en 15 min sobre la **absorción** de la vela: el principio del giro. Así me sitúo en el momento inicial del impulso y me cubro justo del mínimo (en demanda) o máximo (en oferta) siguiente.
+- **BigTradesDir** debe confirmar en sentido del giro.
+- **Simetría** (oferta y demanda en espejo limpio): en demanda, vela desinflándose en el OB 50% = giro alcista, entrada long. En oferta, vela desinflándose en el OB 50% = giro bajista, entrada short.
+- Stop al otro lado del extremo de la mecha de rechazo / del OB.
+
+### Gatillo B — Ruptura de OB con momentum (continuación hacia máximos/mínimos previos)
+
+Evolución del antiguo "Setup A — ruptura de zona con volumen".
+
+- Señal de BigTradesDir en 1 min (en oferta o demanda).
+- El precio viene a romper el OB para salir en la dirección que describe ese OB.
+- Esa ruptura confirmada con manos fuertes es una señal muy potente: alta probabilidad de que el precio busque máximos (o mínimos) anteriores. Momentum.
+- Entrada a favor de la ruptura, stop al otro lado del OB.
 
 ### Setup C — Smart Money Concepts (SMC)
 
 - Lectura de estructura de mercado: BOS (break of structure), CHoCH (change of character)
 - Identificación de zonas de oferta y demanda institucionales
 - Order blocks y bloques de imbalance
-- Confluencia con mis zonas propias para confirmar
+- Confluencia con mis zonas propias (Unizones / IB) para confirmar
 - Entrada en retesteo de zona SMC tras BOS, con confirmación de manos fuertes
 
 ## 8. Condiciones obligatorias para operar
 
 Solo entro cuando se cumplen TODAS estas condiciones:
 
-- Mi setup aparece con claridad (A, B o C)
-- El volumen institucional (BigTradesDir) confirma con señal media o fuerte
-- La vela y su cierre validan la dirección
+- Aparece uno de mis gatillos con claridad (A, B o C)
+- Zona de Unizones válida en 15 min (marco principal), con rating mínimo de 2 estrellas y, cuando aplica, confirmación HTF
+- El volumen institucional (BigTradesDir) confirma con señal media o fuerte en la dirección del trade (obligatorio, sin excepción)
+- La vela y su cierre validan la dirección (absorción en gatillo A, cierre de ruptura en gatillo B)
 - Las medias móviles SMA20 y SMA50 muestran zonas de rebote coherentes con la dirección
 - Existe distancia suficiente respecto a la SMA200 para que actúe como imán o target
+- El sesgo macro del IB no contradice la entrada
 
 Si falta cualquiera de estas condiciones, no opero. Punto.
 
@@ -146,7 +164,7 @@ Nunca haré:
 
 - Operar por venganza después de una pérdida
 - Aumentar el tamaño de posición tras una pérdida (revenge trading disfrazado)
-- Improvisar entradas fuera de mis setups A, B o C
+- Improvisar entradas fuera de mis gatillos A, B o C
 - Escuchar al ego cuando me dice "esta vez sí"
 - Forzar una operación porque "llevo días sin operar"
 - Cambiar de criterio a media operación
